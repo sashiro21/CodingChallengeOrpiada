@@ -9,31 +9,6 @@ namespace problem_set_1.Logic;
 
 internal static class PalindromeChecker
 {
-    internal static bool IsPalindrome(string word)
-    {
-        bool result = false;
-        if (string.IsNullOrEmpty(word))
-        {
-            return false;
-        }
-        string? wordReversed = word.Reverse().ToString();
-        if (string.IsNullOrEmpty(wordReversed))
-        {
-            return false;
-        }
-        try
-        {
-            if (word.Equals(wordReversed, StringComparison.CurrentCultureIgnoreCase))
-            {
-                result = true;
-            }
-        }
-        catch (Exception)
-        {
-        }
-        return result;
-    }
-
     internal static bool CheckPalindrome(string word)
     {
         bool result = false;

@@ -7,14 +7,15 @@ The "Longest Increasing Subsequence" is a common problem in computer science and
 1. Create a variable to store the valid starting sequences.
 2. Create a for loop to iterate over the number set.
 3. For each number, we will loop into the starting sequences if the current number is larger than the last item in that sequence. If valid, we will create a new list with the same items, and the number at end. (e.g.)
-The sequence [2,5,7] will create:
-2
-[2,5]     - Currrent input is 5, then we loop to current items if 5 is valid to be appended
-5
-[2,7]     - Current input is 7, then we loop to current items if 7 is valid to be appended
-[2,5,7]
-[5,7]
-7
+
+> The sequence [2,5,7] will create:
+    2
+    [2,5]     - Currrent input is 5, then we loop to current items if 5 is valid to be appended
+    5
+    [2,7]     - Current input is 7, then we loop to current items if 7 is valid to be appended
+    [2,5,7]
+    [5,7]
+    7
 
 4. After looping, we will loop into the generated valid sequence to check for longest sequence
 
