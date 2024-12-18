@@ -1,25 +1,23 @@
-# Problem Set 2: Valid Parentheses
+# Problem Set 2: Longest Increasing Subsequence
 
 ## Problem Description
-Given a string containing just the characters '(', ')', '{', '}', '[' and ']', determine if the input string is valid. An input string is valid if:
-1.	Open brackets must be closed by the same type of brackets.
-2.	Open brackets must be closed in the correct order.
+The "Longest Increasing Subsequence" is a common problem in computer science and dynamic programming. In the context of an array of integers, the goal is to find the length of the longest subsequence of a given array such that all elements of the subsequence are sorted in increasing order.
 
 ## Solution Overview
-1. To initialize, we can create:
-	a. A Key-Value pair of Closing and Opening Parenthesis;
-	b. An array of allowed characters (for easier checking);
-	c. And a String to store current value to be processed (lets call it `forProcessing`).
-2. When processing the data, we can loop through the elements of the string, then:
-	a. Check if the current character in the string is Closing:
-		i. If Closing, then get the last character in the `forProcessing` variable, compare it if it is the correct opening parenthesis, then remove it after processing.
-		ii. If Opening, Append the character to the `forProcessing` variable.
-	b. The process returns false if:
-		i. Current character is not allowed (not the parenthesis characters, as indicated above).
-		ii. There is a Closing parenthesis and no Opening parenthesis;
-		iii. There is an Opening parenthesis and no Closing parenthesis;
-		iv. Mismatch between the Opening and Closing parenthesis, based on Stack (Last in, first out).
+1. Create a variable to store the valid starting sequences.
+2. Create a for loop to iterate over the number set.
+3. For each number, we will loop into the starting sequences if the current number is larger than the last item in that sequence. If valid, we will create a new list with the same items, and the number at end. (e.g.)
+The sequence [2,5,7] will create:
+2
+[2,5]     - Currrent input is 5, then we loop to current items if 5 is valid to be appended
+5
+[2,7]     - Current input is 7, then we loop to current items if 7 is valid to be appended
+[2,5,7]
+[5,7]
+7
+
+4. After looping, we will loop into the generated valid sequence to check for longest sequence
 
 ## Instructions to Run the Code
-1. Inside the `Program.cs` file, modify the `testData` variable (at line 6) to list the parenthesis data to be processed.
+1. Inside the `Program.cs` file, modify the `set` variable (at line 6) to list the parenthesis data to be processed.
 2. Run the Program as is.

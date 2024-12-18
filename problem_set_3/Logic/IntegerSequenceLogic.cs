@@ -11,38 +11,38 @@ internal static class IntegerSequenceLogic
     internal static int LongestIncreasingSequenceCount(int[] numbers)
     {
         int result = 0;
-        List<List<int>> data = new();
+        List<List<int>> startingSequence = new();
+        bool start = true;
 
         foreach (int number in numbers)
         {
-            if(data.Any())
+            //Dont compare yet
+            if (start)
             {
-                foreach (var item in data)
+                start = false;
+                List<int> sequenceStart = [number];
+                startingSequence.Add(sequenceStart);
+                continue;
+            }
+            List<List<int>> generatedSequences = new();
+            foreach (var item in startingSequence)
+            {
+                var lastItem = item.LastOrDefault();
+                if (number > lastItem)
                 {
-                    
+                    List<int> generatedSeq = new(item) { number };
+                    generatedSequences.Add(generatedSeq);
                 }
             }
-            else
-            {
-            }
+            startingSequence.AddRange(generatedSequences);
+            List<int> sequence = [number];
+            startingSequence.Add(sequence);
         }
-
-        return result;
-    }
-
-    internal static int LongestIncreasingSequenceCountV2(int[] numbers)
-    {
-        int result = 0;
-        int[][] data = new int[numbers.Length][];
-
-        for (int i = 0; i < numbers.Length; i++)
+        foreach (var sequence in startingSequence)
         {
-            data[i][0] = numbers[i];
-
-
-
+            if (sequence.Count > result)
+                result = sequence.Count;
         }
-
         return result;
     }
 }
